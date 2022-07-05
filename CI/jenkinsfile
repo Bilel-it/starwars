@@ -1,0 +1,40 @@
+pipeline {    
+    options { skipDefaultCheckout() }
+    agent {label 'jenkinsmaster'}  
+    stages {
+        stage('BUILD & Push Image') {
+            steps{
+                checkout scm
+
+                echo "#################### Build  frontend  #################"
+                sh '''  
+                        docker build -t frontend:1.0 FE
+                       
+
+                '''
+                echo "#################### Tag & Push Image ms-frontend to azurecr.io #################"
+               
+
+
+
+
+                echo "#################################"
+                echo "#################### backend #################"
+                sh '''  
+                        docker build -t backend:1.0 BE
+                        
+                '''
+                echo "#################### Tag & Push Image products #################"
+               
+               
+                
+
+                
+
+                
+            } 
+        } 
+    }
+        
+}
+  
