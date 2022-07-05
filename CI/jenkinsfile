@@ -1,6 +1,6 @@
 pipeline {    
     options { skipDefaultCheckout() }
-    agent {label 'vm1'}  
+    agent {label 'jenkinsmaster'}  
     stages {
         stage('BUILD & Push Image') {
             steps{
