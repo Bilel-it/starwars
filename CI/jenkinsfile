@@ -8,6 +8,7 @@ pipeline {
 
                 echo "#################### Build  frontend  #################"
                 sh '''  
+                        whoami
                         docker build -t frontend:1.0 FE
                        
 
