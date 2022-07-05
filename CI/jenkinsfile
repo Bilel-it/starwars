@@ -1,6 +1,6 @@
 pipeline {    
     options { skipDefaultCheckout() }
-    agent {label 'jenkinsmaster'}  
+    agent {label 'vm1'}  
     stages {
         stage('BUILD & Push Image') {
             steps{
@@ -13,7 +13,12 @@ pipeline {
 
                 '''
                 echo "#################### Tag & Push Image ms-frontend to azurecr.io #################"
-               
+                sh '''  
+                        
+                        docker tag frontend:1.0 imagedockerpaas.azurecr.io/frontend:1.0
+                        docker push imagedockerpaas.azurecr.io/frontend:1.0
+
+                '''
 
 
 
@@ -25,7 +30,10 @@ pipeline {
                         
                 '''
                 echo "#################### Tag & Push Image products #################"
-               
+                sh '''  
+                        docker tag backend:1.0 imagedockerpaas.azurecr.io/backend:1.0
+                        docker push imagedockerpaas.azurecr.io/ms-products:1.0
+                '''
                
                 
 
@@ -37,4 +45,3 @@ pipeline {
     }
         
 }
-  
