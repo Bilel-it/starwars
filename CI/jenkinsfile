@@ -8,15 +8,15 @@ pipeline {
 
                 echo "#################### Build  frontend  #################"
                 sh '''  
-                        docker build -t frontend:1.1-3 FE
+                        docker build -t frontend:1.1-4 FE
                        
 
                 '''
                 echo "#################### Tag & Push Image ms-frontend to azurecr.io #################"
                 sh '''  
                         
-                        docker tag frontend:1.1-3 imagedockerpaas.azurecr.io/frontend:1.1-3
-                        docker push imagedockerpaas.azurecr.io/frontend:1.1-3
+                        docker tag frontend:1.1-4 imagedockerpaas.azurecr.io/frontend:1.1-4
+                        docker push imagedockerpaas.azurecr.io/frontend:1.1-4
 
                 '''
 
@@ -26,13 +26,13 @@ pipeline {
                 echo "#################################"
                 echo "#################### backend #################"
                 sh '''  
-                        docker build -t backend:1.1-3 BE
+                        docker build -t backend:1.1-4 BE
                         
                 '''
                 echo "#################### Tag & Push Image products #################"
                 sh '''  
-                        docker tag backend:1.1-3 imagedockerpaas.azurecr.io/backend:1.1-3
-                        docker push imagedockerpaas.azurecr.io/backend:1.1-3
+                        docker tag backend:1.1-4 imagedockerpaas.azurecr.io/backend:1.1-4
+                        docker push imagedockerpaas.azurecr.io/backend:1.1-4
                 '''
                
                 
