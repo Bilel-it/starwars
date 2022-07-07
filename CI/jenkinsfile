@@ -47,11 +47,23 @@ pipeline {
                 echo "#################### Deplot inAKS  #################"
 
                 script {
-                    kubernetesDeploy(configs: "kubemanifets.yaml", kubeconfigId: "config")
+                    kubernetesDeploy(configs: "kubemanifets.yaml")
                 }
                 
 
+         }
+         
+         stage('Deploy on kubernetes') {
+            steps {
+                kubernetesDeploy(
+                    kubeconfigId: 'k8s-default-namespace-config-id',
+                    configs: 'deployment.yml',
+                    enableConfigSubstitution: true
+                )
             }
+        }
+            
+            
 
         }
     }
