@@ -47,7 +47,7 @@ pipeline {
                 echo "#################### Deplot inAKS  #################"
 
                 script {
-                    kubernetesDeploy(configs: "kubemanifets.yaml")
+                    kubernetesDeploy(configs: "kubemanifets.yaml", kubeconfigId: "kubernetes")
                 }
                 
 
