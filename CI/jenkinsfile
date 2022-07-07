@@ -42,6 +42,18 @@ pipeline {
                 
             } 
         } 
+        stage('Deploy AKS') {
+            steps{
+                echo "#################### Deplot inAKS  #################"
+
+                script {
+                    kubernetesDeploy(configs: "kubemanifets.yaml", kubeconfigId: "akscofig")
+                }
+                
+
+            }
+
+        }
     }
         
 }
