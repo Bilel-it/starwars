@@ -6,7 +6,10 @@ pipeline {
             steps{
                 checkout scm
 
+                def commitIdLong = sh returnStdout: true, script: 'git rev-parse HEAD'
+                def commitId = commitIdLong.take(7)
                 
+                echo $commitId
                
                 echo "#################### Build  frontend  #################"
                 sh '''  
