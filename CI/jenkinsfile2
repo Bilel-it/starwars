@@ -6,10 +6,11 @@ pipeline {
             steps{
                 checkout scm
 
-                def commitIdLong = sh returnStdout: true, script: 'git rev-parse HEAD'
-                def commitId = commitIdLong.take(7)
-                
-                echo $commitId
+                GIT_COMMIT_HASH = sh "(git log -n 1 --pretty=format:'%H')"
+
+                echo "**************************************************"
+                echo "${GIT_COMMIT_HASH}"
+                echo "**************************************************"
                
                 echo "#################### Build  frontend  #################"
                 sh '''  
