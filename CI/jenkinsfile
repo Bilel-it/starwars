@@ -48,6 +48,7 @@ pipeline {
 
                 script {
                     kubernetesDeploy(configs: "kubemanifets.yaml", kubeconfigId: "kubernetes")
+                    
                 }
                 
 
