@@ -6,8 +6,8 @@ pipeline {
             steps{
                 checkout scm
 
-                GIT_COMMIT_HASH = sh "(git log -n 1 --pretty=format:'%H')"
-                echo $GIT_COMMIT_HASH
+                
+                echo $BUILD_ID
 
                 echo "#################### Build  frontend  #################"
                 sh '''  
