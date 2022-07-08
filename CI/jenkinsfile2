@@ -7,8 +7,7 @@ pipeline {
                 checkout scm
 
                 
-                echo $BUILD_ID
-
+               
                 echo "#################### Build  frontend  #################"
                 sh '''  
                         docker build -t frontend:1.1-4 FE
