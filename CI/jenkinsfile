@@ -42,33 +42,7 @@ pipeline {
                 
             } 
         } 
-        stage('Tag') {
-            
-         
-         steps{
-    script {
-     
-     
-     GIT_COMMIT_HASH = sh (
-    script: "git log -n 1 --pretty=format:'%H'",
-    returnStdout: true
-).trim()   
-     
-               
-
-                echo "**************************************************"
-                echo "bilel ${GIT_COMMIT_HASH}"
-                echo "**************************************************"
-                
-                
-                
-    }
-}
-       
-                  
-            
-
-        }
+        
     }
         
 }
