@@ -52,8 +52,8 @@ pipeline {
                 echo "#################### Tag & Push Image ms-frontend to azurecr.io #################"
                 sh '''  
                         
-                        docker tag frontend:1.1-4 imagedockerpaas.azurecr.io/frontend:${GIT_COMMIT_HASH}
-                        docker push imagedockerpaas.azurecr.io/frontend:${GIT_COMMIT_HASH}
+                        docker tag frontend:1.1-4 imagedockerpaas.azurecr.io/frontend:"${GIT_COMMIT_HASH}"
+                        docker push imagedockerpaas.azurecr.io/frontend:"${GIT_COMMIT_HASH}"
                 '''
                 echo "#################################"
                 echo "#################### backend #################"
@@ -63,8 +63,8 @@ pipeline {
                 '''
                 echo "#################### Tag & Push Image products #################"
                 sh '''  
-                        docker tag backend:1.1-4 imagedockerpaas.azurecr.io/backend:${GIT_COMMIT_HASH}
-                        docker push imagedockerpaas.azurecr.io/backend:${GIT_COMMIT_HASH}
+                        docker tag backend:1.1-4 imagedockerpaas.azurecr.io/backend:"${GIT_COMMIT_HASH}"
+                        docker push imagedockerpaas.azurecr.io/backend:"${GIT_COMMIT_HASH}"
                 '''
                
                 
