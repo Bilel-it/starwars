@@ -21,7 +21,7 @@ pipeline {
      
      
      GIT_COMMIT_HASH = sh (
-    script: "git log -n 1 --pretty=format:'%H'--short=10 HEAD",
+    script: "git rev-list $currentCommit \"^$lastSuccessfulCommit\"",
     returnStdout: true
 ).trim()   
      
