@@ -41,7 +41,7 @@ pipeline {
             steps{
                 checkout scm
 
-                echo = "frontend:${GIT_COMMIT_HASH}"
+                
                 
 
                 echo "#################### Build  frontend  #################"
