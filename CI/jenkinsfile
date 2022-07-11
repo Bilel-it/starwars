@@ -8,19 +8,9 @@ pipeline {
     
     
     
-    stages {
+    stages {    
     
-    
-    
-    
-   
-    
-    
-    
-    
-    
-    
-        stage('BUILD & Push Image') {
+        stage('BUILD & Push Image Frontend') {
             steps{
                 checkout scm
 
@@ -38,6 +28,14 @@ pipeline {
                         docker tag frontend:1.1.5 imagedockerpaas.azurecr.io/frontend:${tag}
                         docker push imagedockerpaas.azurecr.io/frontend:${tag}
                 '''
+            }
+        }
+
+        stage('BUILD & Push Image Backend') {
+            steps{
+
+
+
                 echo "#################################"
                 echo "#################### backend #################"
                 sh '''  
