@@ -1,6 +1,13 @@
 pipeline {    
     options { skipDefaultCheckout() }
-    agent {label 'jenkinsmaster'}  
+    agent {label 'jenkinsmaster'} 
+    
+     environment {
+        tag = sh(returnStdout: true, script: "git rev-parse --short=10 HEAD").trim()
+    }
+    
+    
+    
     stages {
     
     
@@ -52,8 +59,8 @@ pipeline {
                 echo "#################### Tag & Push Image ms-frontend to azurecr.io #################"
                 sh '''  
                         
-                        docker tag frontend:1.1-4 imagedockerpaas.azurecr.io/frontend:'${GIT_COMMIT_HASH}'
-                        docker push imagedockerpaas.azurecr.io/frontend:'${GIT_COMMIT_HASH}'
+                        docker tag frontend:1.1-5 imagedockerpaas.azurecr.io/frontend:${tag}
+                        docker push imagedockerpaas.azurecr.io/frontend:${tag}
                 '''
                 echo "#################################"
                 echo "#################### backend #################"
@@ -63,8 +70,8 @@ pipeline {
                 '''
                 echo "#################### Tag & Push Image products #################"
                 sh '''  
-                        docker tag backend:1.1-4 imagedockerpaas.azurecr.io/backend:'${GIT_COMMIT_HASH}'
-                        docker push imagedockerpaas.azurecr.io/backend:'${GIT_COMMIT_HASH}'
+                        docker tag backend:1.1-5 imagedockerpaas.azurecr.io/backend:${tag}
+                        docker push imagedockerpaas.azurecr.io/backend:${tag}
                 '''
                
                 
