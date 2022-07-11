@@ -42,6 +42,9 @@ pipeline {
         stage('BUILD & Push Image') {
             steps{
                 checkout scm
+                
+                front = "frontend:${GIT_COMMIT_HASH}"
+                echo ${front}
 
                 echo "#################### Build  frontend  #################"
                 sh '''  
