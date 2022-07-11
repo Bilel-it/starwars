@@ -13,31 +13,7 @@ pipeline {
     
     
     
-    stage('Tag') {
-            
-         
-         steps{
-    script {
-     
-     
-     GIT_COMMIT_HASH = sh (
-    script: "git rev-list $currentCommit \"^$lastSuccessfulCommit\"",
-    returnStdout: true
-).trim()   
-     
-               
-                echo "**************************************************"
-                echo "bilel ${GIT_COMMIT_HASH}"
-                echo "**************************************************"
-                
-                
-                
-    }
-}
-       
-                  
-            
-        }
+   
     
     
     
