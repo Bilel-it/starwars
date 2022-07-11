@@ -10,41 +10,62 @@ pipeline {
     
     stages {    
     
-        stage('BUILD & Push Image Frontend') {
+        stage('BUILD Image Frontend') {
             steps{
-                checkout scm
-
-                
+                checkout scm                
                 
 
-                echo "#################### Build  frontend  #################"
+                echo "#################### Build Image Frontend  #################"
                 sh '''  
                         docker build -t frontend:1.1.5 FE
                        
                 '''
-                echo "#################### Tag & Push Image ms-frontend to azurecr.io #################"
+            }
+        }
+        stage('TAG Image Frontend') {
+            steps{
+                echo "#################### Tag  Image ms-frontend to azurecr.io #################"
                 sh '''  
                         
                         docker tag frontend:1.1.5 imagedockerpaas.azurecr.io/frontend:${tag}
+                        '''
+            }
+        }
+        stage('PUSH Image Frontend') {
+            steps{
+                echo "#################### Push Image ms-frontend to azurecr.io #################"
+                sh ''' 
+
                         docker push imagedockerpaas.azurecr.io/frontend:${tag}
                 '''
             }
         }
 
-        stage('BUILD & Push Image Backend') {
+        stage('BUILD Image Backend') {
             steps{
 
-
-
-                echo "#################################"
-                echo "#################### backend #################"
+                echo "#################### Build Image Backend #################"
                 sh '''  
                         docker build -t backend:1.1.5 BE
                         
                 '''
-                echo "#################### Tag & Push Image products #################"
+            }
+        }
+        stage('TAG Image Backend') {
+            steps{
+
+                echo "#################### Tag Image Backend #################"
                 sh '''  
                         docker tag backend:1.1.5 imagedockerpaas.azurecr.io/backend:${tag}
+                        '''
+            }
+        }
+        stage('Push Image Backend') {
+            steps{
+
+                echo "#################### Push Image Backend #################"
+                sh '''  
+
                         docker push imagedockerpaas.azurecr.io/backend:${tag}
                 '''
                
