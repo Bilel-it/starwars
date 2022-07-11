@@ -48,11 +48,14 @@ pipeline {
          steps{
     script {
      echo "#################### 11111111111111 #################"
-                GIT_COMMIT_HASH = "sh "(git log -n 1 --pretty=format:'%H')""
-                 echo "#################### 2222222222222222 #################"
-                 
-                 abc = "abcdefgh"
-                 echo "bilel ${abc}"
+     
+     GIT_COMMIT_HASH = sh (
+    script: 'git log -n 1 --pretty=format:'%H'',
+    returnStdout: true
+).trim()
+     
+     
+               
 
                 echo "**************************************************"
                 echo "${GIT_COMMIT_HASH}"
