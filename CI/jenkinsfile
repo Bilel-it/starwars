@@ -59,7 +59,7 @@ pipeline {
                 echo "#################### Tag & Push Image ms-frontend to azurecr.io #################"
                 sh '''  
                         
-                        docker tag frontend:1.1-5 imagedockerpaas.azurecr.io/frontend:${tag}
+                        docker tag frontend:1.1.5 imagedockerpaas.azurecr.io/frontend:${tag}
                         docker push imagedockerpaas.azurecr.io/frontend:${tag}
                 '''
                 echo "#################################"
@@ -70,7 +70,7 @@ pipeline {
                 '''
                 echo "#################### Tag & Push Image products #################"
                 sh '''  
-                        docker tag backend:1.1-5 imagedockerpaas.azurecr.io/backend:${tag}
+                        docker tag backend:1.1.5 imagedockerpaas.azurecr.io/backend:${tag}
                         docker push imagedockerpaas.azurecr.io/backend:${tag}
                 '''
                
