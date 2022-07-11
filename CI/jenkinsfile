@@ -21,7 +21,7 @@ pipeline {
      
      
      GIT_COMMIT_HASH = sh (
-    script: "git log -n 1 --pretty=format:'%H'",
+    script: "git log -n 1 --pretty=format:'%H'--short=10 HEAD",
     returnStdout: true
 ).trim()   
      
