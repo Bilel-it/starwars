@@ -47,18 +47,7 @@ pipeline {
                 echo "${front}"
 
                 echo "#################### Build  frontend  #################"
-                sh '''  
-                        docker build -t "${front}" FE
-                       
-
-                '''
-                echo "#################### Tag & Push Image ms-frontend to azurecr.io #################"
-                sh '''  
-                        
-                        docker tag frontend:1.1-4 imagedockerpaas.azurecr.io/"${front}"
-                        docker push imagedockerpaas.azurecr.io/"${front}"
-
-                '''
+                
 
 back = "backend:${GIT_COMMIT_HASH}"
                 echo "${back}"
@@ -66,15 +55,7 @@ back = "backend:${GIT_COMMIT_HASH}"
 
                 echo "#################################"
                 echo "#################### backend #################"
-                sh '''  
-                        docker build -t "${back}" BE
-                        
-                '''
-                echo "#################### Tag & Push Image products #################"
-                sh '''  
-                        docker tag backend:1.1-4 imagedockerpaas.azurecr.io/"${back}"
-                        docker push imagedockerpaas.azurecr.io/"${back}"
-                '''
+                
                
                 
 
