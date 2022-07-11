@@ -52,7 +52,7 @@ pipeline {
                  echo "#################### 2222222222222222 #################"
                  
                  abc = "abcdefgh"
-                 echo "bilel, ${abc}"
+                 echo "bilel ${abc}"
 
                 echo "**************************************************"
                 echo "${GIT_COMMIT_HASH}"
