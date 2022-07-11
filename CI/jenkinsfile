@@ -2,21 +2,58 @@ pipeline {
     options { skipDefaultCheckout() }
     agent {label 'jenkinsmaster'}  
     stages {
+    
+    
+    
+    
+    stage('Tag') {
+            
+         
+         steps{
+    script {
+     
+     
+     GIT_COMMIT_HASH = sh (
+    script: "git log -n 1 --pretty=format:'%H'",
+    returnStdout: true
+).trim()   
+     
+               
+
+                echo "**************************************************"
+                echo "bilel ${GIT_COMMIT_HASH}"
+                echo "**************************************************"
+                
+                
+                
+    }
+}
+       
+                  
+            
+
+        }
+    
+    
+    
+    
+    
+    
         stage('BUILD & Push Image') {
             steps{
                 checkout scm
 
                 echo "#################### Build  frontend  #################"
                 sh '''  
-                        docker build -t frontend:1.1-4 FE
+                        docker build -t frontend:${GIT_COMMIT_HASH} FE
                        
 
                 '''
                 echo "#################### Tag & Push Image ms-frontend to azurecr.io #################"
                 sh '''  
                         
-                        docker tag frontend:1.1-4 imagedockerpaas.azurecr.io/frontend:1.1-4
-                        docker push imagedockerpaas.azurecr.io/frontend:1.1-4
+                        docker tag frontend:1.1-4 imagedockerpaas.azurecr.io/frontend:${GIT_COMMIT_HASH}
+                        docker push imagedockerpaas.azurecr.io/frontend:${GIT_COMMIT_HASH}
 
                 '''
 
@@ -26,13 +63,13 @@ pipeline {
                 echo "#################################"
                 echo "#################### backend #################"
                 sh '''  
-                        docker build -t backend:1.1-4 BE
+                        docker build -t backend:${GIT_COMMIT_HASH} BE
                         
                 '''
                 echo "#################### Tag & Push Image products #################"
                 sh '''  
-                        docker tag backend:1.1-4 imagedockerpaas.azurecr.io/backend:1.1-4
-                        docker push imagedockerpaas.azurecr.io/backend:1.1-4
+                        docker tag backend:1.1-4 imagedockerpaas.azurecr.io/backend:${GIT_COMMIT_HASH}
+                        docker push imagedockerpaas.azurecr.io/backend:${GIT_COMMIT_HASH}
                 '''
                
                 
