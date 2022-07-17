@@ -25,7 +25,7 @@ pipeline {
                 echo "#################### Tag  Image ms-frontend to azurecr.io #################"
                 sh '''  
                         
-                        docker tag frontend:1.1.5 paas2.azurecr.io/frontend:1.5
+                        docker tag frontend:1.1.5 paas2.azurecr.io/frontend
                         '''
             }
         }
@@ -34,7 +34,7 @@ pipeline {
                 echo "#################### Push Image ms-frontend to azurecr.io #################"
                 sh ''' 
 
-                        docker push paas2.azurecr.io/frontend:1.5
+                        docker push paas2.azurecr.io/frontend
                 '''
             }
         }
@@ -54,7 +54,7 @@ pipeline {
 
                 echo "#################### Tag Image Backend #################"
                 sh '''  
-                        docker tag backend:1.1.5 paas2.azurecr.io/backend:1.5
+                        docker tag backend:1.1.5 paas2.azurecr.io/backend
                         '''
             }
         }
@@ -64,7 +64,7 @@ pipeline {
                 echo "#################### Push Image Backend #################"
                 sh '''  
 
-                        docker push paas2.azurecr.io/backend:1.5
+                        docker push paas2.azurecr.io/backend
                 '''
                
                 
