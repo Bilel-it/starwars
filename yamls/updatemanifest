@@ -22,7 +22,8 @@ node{
                     echo "#################### 555555555555555555555555555  #################"
                     sh "git commit -m 'Done by jenkins job changemanifest: ${DOCKERTAG}'"
                     echo "#################### 6666666666666666666666  #################"
-                    sh "git push https://${GIT_USENAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/yamls/kubemanifets.yaml.git HEAD:main"
+                    sh "git push https://${GIT_USENAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/starwars.git HEAD:main"
+                    
                 
             }
         }
