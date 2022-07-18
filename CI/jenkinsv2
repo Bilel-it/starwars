@@ -68,12 +68,25 @@ pipeline {
 
                         docker push imagedockerpaas.azurecr.io/backend:${tag}
                 '''
-               
-                
+                         
                 
                 
             } 
         } 
+        
+        stage('Trigger Manifest Update') {
+            steps{
+
+                echo "#################### Trigger Manifest UPDATE #################"
+                
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.tag)]
+                         
+                
+                
+            } 
+        } 
+        
+        
         
     }
         
