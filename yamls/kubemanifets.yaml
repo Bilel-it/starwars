@@ -10,6 +10,7 @@ items:
       labels:
         io.kompose.service: angular-app
       name: angular-app
+      namespace: starwars
     spec:
       ports:
         - name: "4200"
@@ -19,6 +20,9 @@ items:
         io.kompose.service: angular-app
     status:
       loadBalancer: {}
+
+
+
   - apiVersion: v1
     kind: Service
     metadata:
@@ -29,6 +33,7 @@ items:
       labels:
         io.kompose.service: mysql-db
       name: mysql-db
+      namespace: starwars
     spec:
       ports:
         - name: "3306"
@@ -38,6 +43,9 @@ items:
         io.kompose.service: mysql-db
     status:
       loadBalancer: {}
+
+
+
   - apiVersion: v1
     kind: Service
     metadata:
@@ -48,6 +56,7 @@ items:
       labels:
         io.kompose.service: php-my-admin
       name: php-my-admin
+      namespace: starwars
     spec:
       ports:
         - name: "8081"
@@ -57,6 +66,11 @@ items:
         io.kompose.service: php-my-admin
     status:
       loadBalancer: {}
+
+
+
+
+
   - apiVersion: v1
     kind: Service
     metadata:
@@ -67,6 +81,7 @@ items:
       labels:
         io.kompose.service: springboot-app
       name: springboot-app
+      namespace: starwars
     spec:
       ports:
         - name: "8080"
@@ -76,6 +91,10 @@ items:
         io.kompose.service: springboot-app
     status:
       loadBalancer: {}
+
+
+
+
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -86,6 +105,7 @@ items:
       labels:
         io.kompose.service: angular-app
       name: angular-app
+      namespace: starwars
     spec:
       replicas: 1
       selector:
@@ -109,6 +129,10 @@ items:
               resources: {}
           restartPolicy: Always
     status: {}
+
+
+
+
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -119,6 +143,7 @@ items:
       labels:
         io.kompose.service: mysql-db
       name: mysql-db
+      namespace: starwars
     spec:
       replicas: 1
       selector:
@@ -155,6 +180,10 @@ items:
               persistentVolumeClaim:
                 claimName: mysql-db-claim0
     status: {}
+
+
+
+
   - apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
@@ -162,6 +191,7 @@ items:
       labels:
         io.kompose.service: mysql-db-claim0
       name: mysql-db-claim0
+      namespace: starwars
     spec:
       accessModes:
         - ReadWriteOnce
@@ -169,6 +199,10 @@ items:
         requests:
           storage: 100Mi
     status: {}
+
+
+
+
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -179,6 +213,7 @@ items:
       labels:
         io.kompose.service: php-my-admin
       name: php-my-admin
+      namespace: starwars
     spec:
       replicas: 1
       selector:
@@ -202,6 +237,11 @@ items:
               resources: {}
           restartPolicy: Always
     status: {}
+
+
+
+
+
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -212,6 +252,7 @@ items:
       labels:
         io.kompose.service: springboot-app
       name: springboot-app
+      namespace: starwars
     spec:
       replicas: 1
       selector:
