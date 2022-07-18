@@ -1,55 +1,40 @@
 apiVersion: apps/v1
-items:
-  
-   - apiVersion: apps/v1
-    kind: Deployment
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f docker-compose.yaml -o kubemanifets.yaml
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
       labels:
-        io.kompose.service: mysql-db
-      name: mysql-db
+        app: mysql
     spec:
-      replicas: 1
-      selector:
-        matchLabels:
-          io.kompose.service: mysql-db
-      strategy:
-        type: Recreate
-      template:
-        metadata:
-          annotations:
-            kompose.cmd: kompose convert -f docker-compose.yaml -o kubemanifets.yaml
-            kompose.version: 1.22.0 (955b78124)
-          creationTimestamp: null
-          labels:
-            io.kompose.service: mysql-db
-        spec:
-          containers:
-            - env:
-                - name: MYSQL_DATABASE
-                  value: crud-application
-                - name: MYSQL_ROOT_PASSWORD
-                  value: password
-              image: mysql
-              name: mysql-db
-              ports:
-                - containerPort: 3306
-              resources: {}
-              volumeMounts:
-                - mountPath: /docker-entrypoint-initdb.d/dump.sql
-                  name: mysql-db-claim0
-          restartPolicy: Always
-          volumes:
-            - name: mysql-db-claim0
-              persistentVolumeClaim:
-                claimName: mysql-db-claim0
-    status: {}
-
-
-
+      containers:
+        - image: mysql:8
+          name: mysql
+          args:
+            - "--default-authentication-plugin=mysql_native_password"
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql
+                  key: password
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-volumeclaim
 
 
 
