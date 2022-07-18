@@ -14,7 +14,7 @@ node{
                     echo "#################### 2222222222222222  #################"
                     sh "sed -i 's+imagedockerpaas.azurecr.io/backend.*+imagedockerpaas.azurecr.io/backend:${DOCKERTAG}+g' yamls/kubemanifets.yaml"
                     echo "#################### 3333333333333333333  #################"
-                    sh "sed -i 's+imagedockerpaas.azurecr.io/frontend.*+imagedockerpaas.azurecr.io/frontend:${DOCKERTAG}+g' kubemanifets.yaml"
+                    sh "sed -i 's+imagedockerpaas.azurecr.io/frontend.*+imagedockerpaas.azurecr.io/frontend:${DOCKERTAG}+g' yamls/kubemanifets.yaml"
                     echo "#################### 4444444444444444444  #################"
                     sh "cat kubemanifets.yaml"
                     echo "#################### 55555555555555555555  #################"
