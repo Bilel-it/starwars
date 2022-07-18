@@ -7,8 +7,6 @@ node{
         script{
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILED'){
                 withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]){
-                    //sh "git config user.email bilel.marzouk@esprit.tn"
-                    //sh "git config user.name Bilel-it"
                     sh "cat kubemanifets.yaml"
                     sh "sed -i 's+imagedockerpaas.azurecr.io/backend.*+imagedockerpaas.azurecr.io/backend:${DOCKERTAG}+g' kubemanifets.yaml"
                     sh "sed -i 's+imagedockerpaas.azurecr.io/frontend.*+imagedockerpaas.azurecr.io/frontend:${DOCKERTAG}+g' kubemanifets.yaml"
