@@ -21,19 +21,7 @@ pipeline {
                  cleanWs()
             }
         }
-        stage('Get last commit ID') {
-            steps {
-                checkout scm
-                sh 'git rev-parse --short HEAD > .git/commit-id'
-                script {
-                    commit-id = readFile('.git/commit-id').trim()
-                    
-                    
-                     echo "++++++++++++++++++" ${commit-id}
-                }
-            }
-        }
-    
+        
     
     
         stage('BUILD Image Frontend') {
