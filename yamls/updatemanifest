@@ -9,7 +9,7 @@ node{
         script{
             
                 withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]){
-                    sh "cat kubemanifets.yaml"
+                    sh "cat starwars/yamls/kubemanifets.yaml"
                     sh "sed -i 's+imagedockerpaas.azurecr.io/backend.*+imagedockerpaas.azurecr.io/backend:${DOCKERTAG}+g' kubemanifets.yaml"
                     sh "sed -i 's+imagedockerpaas.azurecr.io/frontend.*+imagedockerpaas.azurecr.io/frontend:${DOCKERTAG}+g' kubemanifets.yaml"
                     sh "cat kubemanifets.yaml"
