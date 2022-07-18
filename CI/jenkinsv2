@@ -79,7 +79,7 @@ pipeline {
 
                 echo "#################### Trigger Manifest UPDATE #################"
                 
-                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.tag)]
+                build job: 'yamls/updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.tag)]
                          
                 
                 
