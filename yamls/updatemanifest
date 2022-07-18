@@ -9,12 +9,19 @@ node{
         script{
             
                 withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]){
+                echo "#################### 11111111111111  #################"
                     sh "cat yamls/kubemanifets.yaml"
+                    echo "#################### 2222222222222222  #################"
                     sh "sed -i 's+imagedockerpaas.azurecr.io/backend.*+imagedockerpaas.azurecr.io/backend:${DOCKERTAG}+g' kubemanifets.yaml"
+                    echo "#################### 3333333333333333333  #################"
                     sh "sed -i 's+imagedockerpaas.azurecr.io/frontend.*+imagedockerpaas.azurecr.io/frontend:${DOCKERTAG}+g' kubemanifets.yaml"
+                    echo "#################### 4444444444444444444  #################"
                     sh "cat kubemanifets.yaml"
+                    echo "#################### 55555555555555555555  #################"
                     sh "git add ."
+                    echo "#################### 555555555555555555555555555  #################"
                     sh "git commit -m 'Done by jenkins job changemanifest: ${DOCKERTAG}'"
+                    echo "#################### 6666666666666666666666  #################"
                     sh "git push https://${GIT_USENAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/yamls/kubemanifets.yaml.git HEAD:main"
                 
             }
