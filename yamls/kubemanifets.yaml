@@ -145,7 +145,7 @@ items:
       name: mysql-db
       namespace: starwars
     spec:
-      replicas: 1
+      replicas:
       selector:
         matchLabels:
           io.kompose.service: mysql-db
