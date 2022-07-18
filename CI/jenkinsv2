@@ -7,8 +7,16 @@ pipeline {
     }
     
     
-    stages {
-        stage('Clean Workspace') {
+    
+        
+    
+    
+    
+    
+    stages {  
+    
+    
+    stage('Clean Workspace') {
             steps {
                  cleanWs()
             }
@@ -27,9 +35,6 @@ pipeline {
         }
     
     
-    
-    
-    stages {    
     
         stage('BUILD Image Frontend') {
             steps{
