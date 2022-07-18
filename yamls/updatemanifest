@@ -5,7 +5,7 @@ node{
     }
     stage ('Update GIT'){
         script{
-            catchError(buildResult: 'SUCCESS', stageResult: 'FAILED'){
+            
                 withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]){
                     sh "cat kubemanifets.yaml"
                     sh "sed -i 's+imagedockerpaas.azurecr.io/backend.*+imagedockerpaas.azurecr.io/backend:${DOCKERTAG}+g' kubemanifets.yaml"
@@ -14,7 +14,7 @@ node{
                     sh "git add ."
                     sh "git commit -m 'Done by jenkins job changemanifest: ${DOCKERTAG}'"
                     sh "git push https://${GIT_USENAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/yamls/kubemanifets.yaml.git HEAD:main"
-                }
+                
             }
         }
     }
