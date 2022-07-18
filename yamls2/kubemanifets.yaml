@@ -1,33 +1,7 @@
 apiVersion: apps/v1
 items:
   
-  - apiVersion: v1
-    kind: Service
-    metadata:
-      annotations:
-        kompose.cmd: kompose convert -f docker-compose.yaml -o kubemanifets.yaml
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
-      labels:
-        io.kompose.service: mysql-db
-      name: mysql-db
-    spec:
-      ports:
-        - name: "3306"
-          port: 3306
-          targetPort: 3306
-      selector:
-        io.kompose.service: mysql-db
-    status:
-      loadBalancer: {}
-  
-
-
-
-
-
-
-  - apiVersion: apps/v1
+   - apiVersion: apps/v1
     kind: Deployment
     metadata:
       annotations:
@@ -76,21 +50,6 @@ items:
 
 
 
-
-  - apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      creationTimestamp: null
-      labels:
-        io.kompose.service: mysql-db-claim0
-      name: mysql-db-claim0
-    spec:
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 100Mi
-    status: {}
 
 
 
