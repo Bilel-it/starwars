@@ -26,10 +26,10 @@ pipeline {
                 checkout scm
                 sh 'git rev-parse --short HEAD > .git/commit-id'
                 script {
-                    tag = readFile('.git/commit-id').trim()
+                    commit-id = readFile('.git/commit-id').trim()
                     
                     
-                     echo "++++++++++++++++++" ${tag}
+                     echo "++++++++++++++++++" ${commit-id}
                 }
             }
         }
