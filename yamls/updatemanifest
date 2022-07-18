@@ -3,7 +3,7 @@ node{
     stage('Clone repository'){
         checkout scm
     }
-    stage ('Update GIT){
+    stage ('Update GIT'){
         script{
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILED'){
                 withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]){
