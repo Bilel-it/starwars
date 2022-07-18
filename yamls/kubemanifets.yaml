@@ -254,7 +254,7 @@ items:
       name: springboot-app
       namespace: starwars
     spec:
-      replicas: 1
+      replicas: 2
       selector:
         matchLabels:
           io.kompose.service: springboot-app
