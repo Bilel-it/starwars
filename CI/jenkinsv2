@@ -23,6 +23,16 @@ pipeline {
     
     
     
+    stages { 
+     stage('SCM') {
+            steps {
+                git  branch: 'develop', url: 'https://github.com/Bilel-it/starwars.git'
+            }
+        }
+    
+    
+    
+    
     stage('SonarQube Scan Code Quality') {
             steps {
                 script {
