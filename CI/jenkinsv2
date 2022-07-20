@@ -23,7 +23,7 @@ pipeline {
     
     
     
-    stages { 
+     
      stage('SCM') {
             steps {
                 git  branch: 'develop', url: 'https://github.com/Bilel-it/starwars.git'
