@@ -30,7 +30,7 @@ pipeline {
     
     stage('SonarQube Scan Code Quality') {
             steps {
-            checkout scm 
+             
                 script {
                     scannerHome = tool 'Sonar';
                 }
